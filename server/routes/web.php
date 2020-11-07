@@ -21,4 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('/timeline');
+
+Route::get('/timeline', 'TimelineController@showTimelinePage')->name('timeline');
+Route::post('/timeline', 'TimelineController@postTweet')->name('timeline');

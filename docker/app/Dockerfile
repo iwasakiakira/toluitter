@@ -1,6 +1,5 @@
 # BaseImage
 FROM php:7.3-fpm
-COPY php.ini /usr/local/etc/php/
 
 # package update & install
 # Dockerは文を実行するたびにイメージのレイヤーを作成されてしまうので ; でワンライナーにする \ で次行に続く
@@ -32,3 +31,4 @@ RUN composer global require "laravel/installer"
 
 # ターミナル画面を見やすく変更
 RUN echo 'export PS1="\n\[\033[35m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\n[app] \$ "' >> /root/.bashrc
+COPY php.ini /usr/local/etc/php/
