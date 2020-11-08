@@ -14,5 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+
+
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('/timeline');
+
+// Route::get('/', 'TopPageController@index');
+
+//タイムライン系
+Route::get('/timeline/list', 'TimelineController@showTimelinePage')->name('timeline');
+Route::post('/timeline', 'TimelineController@postTweet')->name('timeline');
+Route::post('/timeline/list', 'TimelineController@updateshow')->name('update');
+
+
+
+//マイページ系
+Route::get('/mypage' , 'MyPageController@show');
