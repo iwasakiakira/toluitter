@@ -11,18 +11,22 @@ class TimelineController extends Controller
 {
     public function showTimelinePage()
     {
-        $tweets = TweetModel::latest()->where('bazz_models_id', '0')->get();
+        // $tweets = TweetModel::latest()->where('bazz_models_id', '0')->get();
+        $tweets = TweetModel::all();
 
         return view('timeline', [
             'tweets' => $tweets,
         ]);
     }
     public function updateshow( Request $request){
-
+        if ($request->topic == 0 ) {
+            $tweets = TweetModel::latest()->where('bazz_models_id', $request->topic)->get();
+        } else {
         $tweets = TweetModel::latest()->where('bazz_models_id', $request->topic)->get();
-        return view('timeline', [
+            return view('timeline', [
             'tweets' => $tweets,
-        ]);
+            ]);
+            }
     }
 
     public function postTweet(Request $request)
