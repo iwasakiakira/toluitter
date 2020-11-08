@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTweetModelsTable extends Migration
+class CreateBazzModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateTweetModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tweet_models', function (Blueprint $table) {
+        Schema::create('bazz_models', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
             $table->text('bazz_models_id');
-            $table->text('name');
-            $table->text('tweet');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateTweetModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweet_models');
+        Schema::dropIfExists('bazz_models');
     }
 }

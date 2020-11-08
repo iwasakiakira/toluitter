@@ -10,5 +10,6 @@ class TweetModel extends Model
         'user_id',
         'name',
         'tweet',
+        'bazz_models_id'
     ];
 }

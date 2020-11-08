@@ -28,7 +28,7 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected $redirectTo = 'timeline';
+    protected $redirectTo = 'timeline/list';
 
     /**
      * Create a new controller instance.
@@ -42,6 +42,6 @@ class LoginController extends Controller
 
     protected function loggedOut($request)
     {
-        return redirect(route('timeline'));
+        return redirect('/timeline/list');
     }
 }

@@ -11,8 +11,15 @@ class TimelineController extends Controller
 {
     public function showTimelinePage()
     {
-        $tweets = TweetModel::latest()->get();
+        $tweets = TweetModel::latest()->where('bazz_models_id', '0')->get();
 
+        return view('timeline', [
+            'tweets' => $tweets,
+        ]);
+    }
+    public function updateshow( Request $request){
+
+        $tweets = TweetModel::latest()->where('bazz_models_id', $request->topic)->get();
         return view('timeline', [
             'tweets' => $tweets,
         ]);
@@ -22,12 +29,14 @@ class TimelineController extends Controller
     {
         $request->validate([
             'tweet' => 'required|max:140',
+            // 'bazz_models_id' => 'required'
         ]);
-
+        // dd($request->tweet);
         TweetModel::create([
             'user_id' => Auth::user()->id,
             'name'    => Auth::user()->name,
             'tweet'   => $request->tweet,
+            'bazz_models_id' => $request->topic,
         ]);
 
         return back();
